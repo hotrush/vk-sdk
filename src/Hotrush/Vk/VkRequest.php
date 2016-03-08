@@ -134,10 +134,10 @@ class VkRequest
                 }
                 break;
             case 'POST':
-                $requestParams['body'] = $this->params;
+                $requestParams['form_params'] = $this->params;
                 if ($this->accessToken)
                 {
-                    $requestParams['body']['access_token'] = $this->accessToken;
+                    $requestParams['form_params']['access_token'] = $this->accessToken;
                 }
                 break;
         }
