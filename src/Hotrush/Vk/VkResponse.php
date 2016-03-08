@@ -36,7 +36,7 @@ class VkResponse
     {
         $this->statusCode = (int) $statusCode;
         $this->headers = $headers;
-        $this->body = $this->$body;
+        $this->body = $body;
     }
 
     /**
