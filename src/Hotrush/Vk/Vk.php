@@ -125,6 +125,37 @@ class Vk
         );
     }
 
+    public function uploadWallPhoto($photoContents, $accessToken, $userId = null, $groupId = null)
+    {
+        $requestParams = [];
+        if ($groupId)
+        {
+            $requestParams['group_id'] = $groupId;
+        }
+
+        $uploadServerResponse = $this->post('photos.getWallUploadServer', $requestParams, $accessToken);
+
+        $uploadResponse = $this->post($uploadServerResponse['response']['upload_url'], [
+            'photo' => $photoContents
+        ]);
+
+        $savePhotoParams = [
+            'photo' => $uploadResponse['response']['photo'],
+            'server' => $uploadServerResponse['response']['server'],
+            'hash' => $uploadResponse['response']['hash'],
+        ];
+        if ($userId)
+        {
+            $savePhotoParams['user_id'] = $userId;
+        }
+        else if ($groupId)
+        {
+            $savePhotoParams['group_id'] = $groupId;
+        }
+
+        return $this->post('photos.saveWallPhoto', $savePhotoParams);
+    }
+
     /**
      * Send request to api
      *
