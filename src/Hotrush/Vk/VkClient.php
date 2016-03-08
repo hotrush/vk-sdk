@@ -24,7 +24,7 @@ class VkClient
     public function __construct()
     {
         $this->client = new HttpClient([
-            'base_url' => static::API_BASE_URL,
+            'base_uri' => static::API_BASE_URL,
         ]);
     }
 
