@@ -140,10 +140,11 @@ class Vk
         ]);
 
         $savePhotoParams = [
-            'photo' => $uploadResponse->getBody()['response']['photo'],
-            'server' => $uploadServerResponse->getBody()['response']['server'],
-            'hash' => $uploadResponse->getBody()['response']['hash'],
+            'photo' => $uploadResponse->getBody()['photo'],
+            'server' => $uploadServerResponse->getBody()['server'],
+            'hash' => $uploadResponse->getBody()['hash'],
         ];
+
         if ($userId)
         {
             $savePhotoParams['user_id'] = $userId;
