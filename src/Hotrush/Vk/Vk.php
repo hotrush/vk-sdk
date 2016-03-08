@@ -135,14 +135,14 @@ class Vk
 
         $uploadServerResponse = $this->post('photos.getWallUploadServer', $requestParams, $accessToken);
 
-        $uploadResponse = $this->post($uploadServerResponse['response']['upload_url'], [
+        $uploadResponse = $this->post($uploadServerResponse->getBody()['response']['upload_url'], [
             'photo' => $photoContents
         ]);
 
         $savePhotoParams = [
-            'photo' => $uploadResponse['response']['photo'],
-            'server' => $uploadServerResponse['response']['server'],
-            'hash' => $uploadResponse['response']['hash'],
+            'photo' => $uploadResponse->getBody()['response']['photo'],
+            'server' => $uploadServerResponse->getBody()['response']['server'],
+            'hash' => $uploadResponse->getBody()['response']['hash'],
         ];
         if ($userId)
         {
