@@ -38,4 +38,34 @@ class VkResponse
         $this->headers = $headers;
         $this->body = $this->$body;
     }
+
+    /**
+     * Get response status code
+     *
+     * @return int
+     */
+    public function getStatusCode()
+    {
+        return $this->statusCode;
+    }
+
+    /**
+     * Get response headers
+     *
+     * @return array
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
+    }
+
+    /**
+     * Get response body
+     *
+     * @return array
+     */
+    public function getBody()
+    {
+        return $this->body;
+    }
 }

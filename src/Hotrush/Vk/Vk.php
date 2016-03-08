@@ -64,7 +64,7 @@ class Vk
             throw new VkException('Required VK "app_secret" is not provided');
         }
 
-        $this->app = new VkApp($config['app_id'], $config['app_secret'], $config['access_token']);
+        $this->app = new VkApp($config['app_id'], $config['app_secret']);
 
         $this->client = new VkClient();
     }
