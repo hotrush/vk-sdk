@@ -135,9 +135,11 @@ class Vk
 
         $uploadServerResponse = $this->post('photos.getWallUploadServer', $requestParams, $accessToken);
 
-        $uploadResponse = $this->post($uploadServerResponse->getBody()['response']['upload_url'], [
-            'photo' => $photoContents
-        ]);
+        $uploadResponse = $this->sendUploadRequest(
+            $uploadServerResponse->getBody()['response']['upload_url'],
+            'photo',
+            $photoContents
+        );
 
         $savePhotoParams = [
             'photo' => $uploadResponse->getBody()['photo'],
@@ -171,6 +173,17 @@ class Vk
         $request = $this->createRequest($method, $endpoint, $params, $accessToken);
 
         return $this->client->sendRequest($request);
+    }
+
+    private function sendUploadRequest($url, $name, $contents)
+    {
+        $request = new VkUploadRequest(
+            $url,
+            $name,
+            $contents
+        );
+
+        return $this->client->sendUploadRequest($request);
     }
 
     /**

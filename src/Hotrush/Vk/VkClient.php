@@ -48,4 +48,32 @@ class VkClient
             json_decode($response->getBody()->getContents(), true)
         );
     }
+
+    /**
+     * Send file upload request to api
+     *
+     * @param VkUploadRequest $request
+     * @return VkResponse
+     */
+    public function sendUploadRequest(VkUploadRequest $request)
+    {
+        $response = $this->client->request(
+            'POST',
+            $request->getUrl(),
+            [
+                'multipart' => [
+                    [
+                        'name' => $request->getName(),
+                        'contents' => $request->getContents()
+                    ]
+                ]
+            ]
+        );
+
+        return new VkResponse(
+            $response->getStatusCode(),
+            $response->getHeaders(),
+            json_decode($response->getBody()->getContents(), true)
+        );
+    }
 }
