@@ -1,0 +1,21 @@
+{
+    "name": "hotrush/vk-sdk",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "rush",
+            "email": "johny64@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "illuminate/support": "~5.0|~5.1|~5.2",
+        "illuminate/config": "~5.0|~5.1|~5.2",
+        "guzzlehttp/guzzle": "^6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hotrush\\Vk\\": "src/Hotrush/Vk"
+        }
+    }
+}
