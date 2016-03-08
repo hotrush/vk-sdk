@@ -154,7 +154,7 @@ class Vk
             $savePhotoParams['group_id'] = $groupId;
         }
 
-        return $this->post('photos.saveWallPhoto', $savePhotoParams);
+        return $this->post('photos.saveWallPhoto', $savePhotoParams, $accessToken);
     }
 
     /**
