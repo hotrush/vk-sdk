@@ -141,7 +141,7 @@ class Vk
 
         $savePhotoParams = [
             'photo' => $uploadResponse->getBody()['photo'],
-            'server' => $uploadServerResponse->getBody()['server'],
+            'server' => $uploadResponse->getBody()['server'],
             'hash' => $uploadResponse->getBody()['hash'],
         ];
 
